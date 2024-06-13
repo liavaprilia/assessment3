@@ -1,5 +1,4 @@
 package org.d3if3165.assessment3aprilia.network
-
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
