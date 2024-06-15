@@ -92,10 +92,12 @@ fun MainScreen() {
     val user by dataStore.userFlow.collectAsState(User())
 
     var showDialog by remember { mutableStateOf(false) }
+    var shoeBungaDialog by remember { mutableStateOf(false) }
 
     var bitmap: Bitmap? by remember { mutableStateOf(null) }
     val launcher = rememberLauncherForActivityResult(CropImageContract()) {
         bitmap = getCroppedImage(context.contentResolver, it)
+        if (bitmap != null) shoeBungaDialog = true
     }
 
     var isGrid by remember { mutableStateOf(true) }
@@ -169,6 +171,15 @@ fun MainScreen() {
                 user = user,
                 onDismissRequest = { showDialog = false }) {
                 CoroutineScope(Dispatchers.IO).launch { signOut(context, dataStore) }
+                showDialog = false
+            }
+        }
+
+        if (shoeBungaDialog) {
+            BungaDialog(
+                bitmap = bitmap,
+                onDismissRequest = { shoeBungaDialog = false }) { nama, namaLatin ->
+                    Log.d("TAMBAH", "$nama $namaLatin ditambahkan.")
                 showDialog = false
             }
         }

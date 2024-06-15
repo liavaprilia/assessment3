@@ -9,4 +9,8 @@
     <string name="grid">Grid</string>
     <string name="list">List</string>
     <string name="tambah_data"> Tambah data</string>
+    <string name="nama">Nama</string>
+    <string name="namaLatin">Nama Latin</string>
+    <string name="batal">Batal</string>
+    <string name="simpan">Simpan</string>
 </resources>
